@@ -1,0 +1,78 @@
+/* Florals and ceremony motion. The original photographs retain their framing. */
+#petal-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60;contain:strict}
+.celebration-controls{display:none}
+.js .celebration-controls{position:fixed;z-index:70;bottom:max(18px,env(safe-area-inset-bottom));right:max(20px,env(safe-area-inset-right));display:flex;align-items:center;gap:4px;border:1px solid #d9b77965;border-radius:40px;padding:5px;background:#360914ed;box-shadow:0 6px 32px #17020835;backdrop-filter:blur(14px);color:#f5dfb3}
+.celebration-controls button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:8px 14px;border:0;border-radius:30px;background:transparent;color:inherit;font-size:.875rem;white-space:nowrap;transition:background .2s,color .2s}
+.celebration-controls button>span[aria-hidden]{font-family:Georgia,serif;font-size:1.45rem;line-height:1}
+.celebration-controls .shower-petals{background:#efd5a0;color:#4a1021}
+.celebration-controls button:hover{background:#733047;color:#fff0d7}
+.celebration-controls .shower-petals:hover{background:#fff0c8;color:#4a1021}
+.celebration-controls button:disabled{opacity:.65;cursor:wait}
+.celebration-controls button:focus-visible{outline-offset:2px}
+.js .celebration-controls{max-width:calc(100vw - 24px);flex-wrap:wrap;justify-content:center}
+.js .celebration-controls[hidden]{display:none}
+body.effects-paused .welcome-florals,body.effects-paused .portrait-florals,body.effects-paused .welcome-names,body.effects-paused .couple-names,body.effects-paused .open-button:after,body.effects-paused .photo-frame:after{animation-play-state:paused}
+.js body.is-entering{overflow:hidden}
+.js .welcome{background:transparent;transition:visibility 0s linear 1.7s;perspective:1400px}
+.welcome-art{background:radial-gradient(ellipse at 50% 44%,#8b273b,#510d1c 56%,#220710);opacity:1;inset:0!important;box-shadow:none!important;transition:opacity 1.1s ease .35s}
+.ceremony-curtains{position:fixed;inset:0;z-index:0;pointer-events:none;display:flex}
+.ceremony-curtain{position:relative;width:50%;height:100%;background-color:#590f24;background-image:linear-gradient(90deg,#19040d9c,transparent 16%,#a4334730 42%,#29071855 81%,#ad344936),url('assets/ceremonial-border.webp');background-size:100% 100%,200% 100%;background-repeat:no-repeat;box-shadow:inset 0 0 80px #22041090;transition:transform 1.65s cubic-bezier(.65,0,.15,1);will-change:transform}
+.curtain-left{background-position:center,left top;border-right:1px solid #e4bb7445;transform-origin:left center}
+.curtain-right{background-position:center,right top;border-left:1px solid #e4bb7445;transform-origin:right center}
+.welcome-florals{position:fixed;pointer-events:none;z-index:2;top:-12px;left:0;width:100%;height:auto;max-height:65vh;object-fit:fill;transform-origin:50% 0;animation:floral-sway 10s ease-in-out infinite alternate;transition:opacity .75s ease,translate 1.35s ease}
+.welcome-content{position:relative;z-index:3;width:min(82%,770px);padding:clamp(140px,18vh,210px) 20px 100px;text-shadow:0 2px 16px #28091490;transition:opacity .55s ease,transform .95s ease;animation:welcome-in 1.4s ease both}
+.welcome-portrait{background:#510d1c;box-shadow:0 0 0 7px #d9b77913,0 0 48px #f0af5b20}
+.welcome-blessing{font-size:clamp(1.35rem,2.6vw,1.85rem)}
+.welcome-names{font-size:clamp(2.85rem,6.1vw,5.4rem);line-height:1.06}
+.welcome .eyebrow{font-size:.875rem;letter-spacing:.16em}
+.music-note{font-size:.875rem}
+.open-button{border-radius:3px;overflow:hidden;isolation:isolate;background:linear-gradient(105deg,#e1bb79,#f8e4b4 45%,#e3be80);box-shadow:0 9px 40px #13030766,0 0 30px #d3a35118}
+.open-button:after{content:'';position:absolute;pointer-events:none;z-index:-1;inset:-50% -80%;background:linear-gradient(105deg,transparent 42%,#fff8d68c 49%,transparent 56%);transform:translateX(-45%);animation:button-glimmer 7s ease-in-out infinite}
+.js .welcome.is-leaving{opacity:1;visibility:hidden;pointer-events:none}
+.welcome.is-leaving .curtain-left{transform:translateX(-102%) rotateY(10deg)}
+.welcome.is-leaving .curtain-right{transform:translateX(102%) rotateY(-10deg)}
+.welcome.is-leaving .welcome-art{opacity:0}
+.welcome.is-leaving .welcome-florals{opacity:0;translate:0 -65px}
+.welcome.is-leaving .welcome-content{opacity:0;transform:scale(.94) translateY(-12px)}
+.js .welcome:before,.js .welcome:after{display:none}
+.site-header{position:sticky;top:0;background:#510d1cea;backdrop-filter:blur(16px);z-index:25}
+.hero{background:radial-gradient(ellipse at 75% 35%,#a3423927,transparent 62%);padding-top:95px}
+.hero-photo-wrap{isolation:isolate;margin-top:35px;padding:0 10px}
+.portrait-florals{position:absolute;z-index:2;left:-14%;top:-75px;width:128%;max-width:none;pointer-events:none;transform-origin:50% 0;animation:floral-sway 12s ease-in-out infinite alternate}
+.photo-frame{z-index:1;border-color:#edce91;background:#5c1727;box-shadow:0 0 0 8px #d9b7790c,0 24px 65px #25061255;transform:perspective(1200px) rotateX(var(--portrait-x,0deg)) rotateY(var(--portrait-y,0deg));transition:transform .35s ease-out;will-change:transform}
+.photo-frame:after{content:'';position:absolute;inset:-5px;padding:1px;border-radius:inherit;pointer-events:none;background:conic-gradient(from 0deg,transparent 0deg,#fff0c488 65deg,transparent 130deg,transparent 235deg,#f2c474aa 290deg,transparent 350deg);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;opacity:.65;animation:frame-glow 5s ease-in-out infinite alternate}
+.hero-photo{filter:none}
+.photo-caption{position:relative;z-index:3;padding-top:7px}
+.hero-copy>.eyebrow,.eyebrow{font-size:.875rem}
+.hero-copy>.eyebrow{letter-spacing:.12em}
+.couple-names{color:#f7e2b2;text-shadow:0 2px 35px #ffc77613}
+.is-open .hero-copy{animation:ceremony-reveal 1.3s .55s both}
+.is-open .hero-photo-wrap{animation:ceremony-reveal 1.5s .75s both}
+.is-open .hero-dateline{animation:ceremony-reveal 1.2s .9s both}
+.countdown-section{position:relative;background:radial-gradient(ellipse at 50% 40%,#87283b7d,transparent 67%),#3b0919;border-top:1px solid #d9b77930;border-bottom:1px solid #d9b77930}
+.countdown{max-width:770px;gap:16px}
+.countdown-unit{padding:24px 10px 18px;border:1px solid #d9b77950;border-radius:80px 80px 7px 7px;background:linear-gradient(150deg,#f4c7790c,transparent 65%);box-shadow:inset 0 0 24px #27061035;max-width:145px;min-width:0}
+.countdown-colon{align-self:center;line-height:1;margin-top:-35px}
+.countdown-value{color:#f5dfb3;font-size:clamp(3.2rem,5.8vw,5rem)}
+.countdown-label{font-size:.875rem;letter-spacing:.08em}
+.countdown-label small{font-size:.875rem;color:#e0be9b}
+.memories-section{position:relative;background:radial-gradient(ellipse at 0 0,#f0d6ae,transparent 48%),#fbf2e5}
+.gallery-card .image-crop{box-shadow:0 12px 26px #57243c15}
+.gallery-card img,.celebration-photo img{filter:none}
+.gallery-card:hover img{filter:none}
+.closing-section{padding-top:135px;padding-bottom:95px}
+.closing-section>:not(.closing-florals){position:relative;z-index:1}
+.closing-florals{position:absolute;inset:0 0 auto;width:100%;max-height:100%;object-fit:fill;opacity:.44;pointer-events:none}
+.closing-section .fine-divider{max-width:160px}
+.site-footer{padding-bottom:100px}
+.blessing-toast{position:fixed;bottom:90px;left:50%;z-index:71;translate:-50% 0;padding:12px 25px;border:1px solid #e2bf7b70;border-radius:40px;background:#480d20ed;color:#ffedc6;text-align:center;font-family:var(--nepali);font-size:1rem;width:max-content;max-width:calc(100% - 32px);box-shadow:0 6px 40px #1b03084a;pointer-events:none;animation:toast-arrive .4s ease both}
+@keyframes floral-sway{from{transform:rotate(-.55deg)}to{transform:rotate(.55deg)}}
+@keyframes button-glimmer{0%,68%{transform:translateX(-45%)}85%,100%{transform:translateX(45%)}}
+@keyframes frame-glow{from{opacity:.3}to{opacity:.9}}
+@keyframes ceremony-reveal{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes toast-arrive{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1100px){.welcome-content{padding-top:160px;padding-bottom:95px}.welcome-florals{left:50%;width:min(1400px,100vw);translate:-50% 0;max-height:72vh}.welcome.is-leaving .welcome-florals{translate:-50% -65px}.welcome-portrait{width:156px;height:156px}.welcome-date{margin-bottom:22px}.hero-copy{padding-right:12px}}
+@media(max-width:720px){.welcome-content{width:84%;padding:120px 10px 110px}.welcome-florals{top:-3px;max-height:none}.welcome .eyebrow{font-size:.8125rem;letter-spacing:.09em}.welcome-portrait{width:155px;height:155px;margin:20px auto}.welcome-blessing{font-size:1.55rem}.welcome-names{font-size:clamp(2.7rem,9vw,4rem)}.welcome-date{font-size:.875rem;letter-spacing:.01em}.open-button{min-width:230px;min-height:73px}.welcome-nepali{margin-top:14px}.hero{padding-top:50px}.hero-copy>.eyebrow{font-size:.8125rem;letter-spacing:.09em}.hero-photo-wrap{margin-top:85px;width:min(94%,410px)}.portrait-florals{width:126%;left:-13%;top:-65px}.hero-dateline{margin-top:30px}.countdown{gap:5px;max-width:440px}.countdown-unit{padding:20px 3px 12px;border-radius:55px 55px 5px 5px}.countdown-value{font-size:3.1rem}.countdown-colon{font-size:1.1rem;margin-top:-30px}.countdown-label{font-size:.75rem;letter-spacing:0}.countdown-label small{font-size:.8125rem}.countdown-section h2{font-size:2.65rem}.celebration-controls{bottom:max(12px,env(safe-area-inset-bottom))!important;right:12px!important;gap:2px;padding:4px!important}.celebration-controls button{font-size:.8125rem;padding:7px 11px;gap:5px}.celebration-controls button>span[aria-hidden]{font-size:1.3rem}.closing-section{padding-top:100px;padding-bottom:60px}.closing-florals{top:0;width:140%;max-width:none;left:-20%;opacity:.3}.site-footer{padding-bottom:95px}.blessing-toast{bottom:82px;font-size:.9375rem}.music-button{min-height:44px}.section-heading .eyebrow{font-size:.8125rem}}
+@media(max-width:380px){.welcome-content{width:86%;padding-top:105px}.welcome-names{font-size:2.65rem}.welcome-portrait{width:138px;height:138px}.welcome-blessing{font-size:1.35rem}.welcome-date{font-size:.8125rem}.open-button{min-width:215px}.countdown-value{font-size:2.6rem}.countdown-label{font-size:.7rem}.countdown-label small{font-size:.8rem}.countdown-section{padding-left:14px;padding-right:14px}.celebration-controls button{padding:7px 9px}.portrait-florals{top:-53px}}
+@media(max-height:720px) and (min-width:721px){.welcome-content{padding-top:95px;padding-bottom:85px}.welcome-portrait{width:115px;height:115px;margin:12px auto}.welcome-blessing{font-size:1.3rem}.welcome-names{font-size:3.9rem}.welcome-date{margin:10px 0 15px}.welcome-nepali{margin-top:8px}.welcome-florals{max-height:72vh}.music-note{margin-top:9px}.open-button{min-height:67px}}
+@media(prefers-reduced-motion:reduce){.ceremony-curtain,.welcome-florals,.welcome-art,.welcome-content,.photo-frame{transition:none!important}.welcome-florals,.portrait-florals,.open-button:after,.photo-frame:after,.is-open .hero-copy,.is-open .hero-photo-wrap,.is-open .hero-dateline,.blessing-toast{animation:none!important}.js .welcome{transition:none}.photo-frame{transform:none!important}}

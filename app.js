@@ -48,12 +48,17 @@
     // Start during this user gesture so mobile browsers can permit audio.
     playMusic();
     page.inert = false;
-    document.body.classList.add('is-open');
+    document.body.classList.add('is-open', 'is-entering');
     welcome.classList.add('is-leaving');
     window.scrollTo({ top: 0, behavior: 'instant' });
     byId('invitation').focus({ preventScroll: true });
     welcome.inert = true;
-    window.setTimeout(() => { welcome.hidden = true; welcome.style.display = 'none'; }, reducedMotion ? 0 : 900);
+    document.dispatchEvent(new CustomEvent('invitation:open'));
+    window.setTimeout(() => {
+      welcome.hidden = true;
+      welcome.style.display = 'none';
+      document.body.classList.remove('is-entering');
+    }, reducedMotion ? 0 : 1700);
     revealVisibleSections();
   });
 
